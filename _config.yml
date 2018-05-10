@@ -79,7 +79,7 @@ analytics:
 # Site Author
 author:
   name             : "Zhiao Zhou"
-  avatar           : "profile.png"
+  avatar           : "https://zhiaozhou.github.io/images/profile.png"
   bio              : "Quant investment & AI Enthusiaste. NYU CUSP 2017 Alumini & GaTech OMSCS 2018 candidate."
   location         : "Shanghai, China"
   employer         :
