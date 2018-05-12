@@ -92,14 +92,16 @@ In this part, we will mainly focus on the algorithm of the whole project, and di
     5.1.3 Squash Function
     The equation of squash function is shown as (1):
     ![](https://zhiaozhou.github.io/images/capsnet/figure1.png)
+    <hr>
     *Figure 1*
+    <hr>
     This function will keep the direction of original vectors, while it will squash the length of the vectors. The length will always smaller than 1. 
     When we use vectors to describe the features, spatial angle is used for describe the relationship between different features. Therefore, vectors could describe more complicated relationship than scalar. While length of vector works as the scalar in regular CNN module. The larger of a scalar, the higher existing percentage of that feature. In this way, we use squash function to squash the length, and make length to represent the existing percentage of that feature.
     5.1.4 Reconstruction & Loss function
     The aim of reconstruction is to distinguish the difference between real label and predicted ones. The process of reconstruction has been described in [2] as Figure 2. There are 3 layers: First, we adjust the prediction into 64 * 160 matrix; Second, we generate first fully connected layer with size 64 * 512; Third, generate the second fully connected layer with size 64 * 1024; Forth, generate the third fully connected layer with size 64 * 784; Last, reshape the matrix into 64 * 28 * 28 * 1.
     When we reconstruct the input pictures, there are two methods to calculate the difference. The first one is to calculate the Euclidean distance between each reconstructed picture and the orginal pictures derived from. Then we calculate the mean. Another way is to use:
     ![](https://zhiaozhou.github.io/images/capsnet/figure2.png)
-    *Figure 2*
+    <hr>*Figure 2*<hr>
     to calculate the loss.
     The result for both loss calculation is 64 size matrix.
     Then we need to combine these two loss to form the loss function.
@@ -119,12 +121,12 @@ The input vector could also be called as lower-layer capsule. The output is high
 There are 3 steps in this part and last 2 are Dynamic Routing.
 The first step is affine transform:
 ![](https://zhiaozhou.github.io/images/capsnet/figure3.png)
-*Figure 3*
+<hr>*Figure 3*<hr>
 It considers the relation between lower-layer capsules and higher-level capsules. That is the reason that Dynamic Routing could keep affine invariance. Here matrix wij is those relations. The size of wij is 1 * 6 * 6 * 32 * 8 * 10 * 16, which means for each element of each vector, we need to consider the relations with each element for all output capsules. 
 After calculating dot product with lower-layer capsule, we acquire a 64 * 6 *6 * 32 * 8 * 10 * 16 matrix. Then we sum the elements for each vector and acquire a 64 * 6 * 6 * 32 * 1 * 10 * 6 vector. It shows the prediction for output feature by each input vector. We could consider this step as another convolution layer.
 Not all predictions are useful. We need a scalar weight matrix to determine which predictions are more important and which are not. The size is 1 * 6 * 6 * 32 * 1 * 10 * 1. We initialize this matrix as constant 0, and it could adjust to suitable value within 3 iterations. Softmax function could be added on this weight matrix. Therefore, in second step, we do dot product and acquire the suitable prediction for each input vector. Then we need to sum all predictions in the same pictures. 
 ![](https://zhiaozhou.github.io/images/capsnet/figure4.png)
-*Figure 4*
+<hr>*Figure 4*<hr>
 Now we have acquired the prediction for each higher-layer capsule by each picture. The result is a 64 * 1 * 1* 1 * 1 * 10 * 16 matrix.
 The last step is to squash each output vector. The prediction result is a 64 * 10 * 16 matrix.
 We have mentioned that we should do iterations here to update the weight matrix in step 2. The process has been described in [2] as Procedure 1. After 3 iterations, the module could acquire a satisfying prediction result.
@@ -133,7 +135,7 @@ The original paper doesn’t use some widely used optimization methods such as b
 In addition, in order to prevent overfitting, we used an additional L2 regularization term to the loss function. 
 At last, we tested a new way called cyclical learning rate method to find our best initial learning rate. This method is proposed by Leslie N. Smith 2017. We first initiated our learning rate with 0.00001 and then let it increase gradiently by every epoch and then we will get the image of loss function by epoch as shown in Figure 5. We can see that when learning rate goes up to 0.00075, the slope of the curve became the biggest so we chose this as our initial learning rate.  And it turns out to perform well.
 ![](https://zhiaozhou.github.io/images/capsnet/figure5.png)
-*Figure 5*
+<hr>*Figure 5*<hr>
 
 6.Architecture and Design
 =====
@@ -152,7 +154,7 @@ The structure of the whole process could be divided into two modules: mini-batch
     6.3 Whole Structure
     The architecture of this project, along with sub-structure of each steps could be organized as a flow chart shown in Figure 6:
     ![](https://zhiaozhou.github.io/images/capsnet/figure6.jpg)
-    *Figure 6*
+    <hr>*Figure 6*<hr>
 
 Results
 =====
@@ -179,15 +181,15 @@ And we also noticed that the original paper did not use some optimization such a
 *Table 1*
 
 ![](https://zhiaozhou.github.io/images/capsnet/figure7.png)
-*Figure 7*
+<hr>*Figure 7*<hr>
 ![](https://zhiaozhou.github.io/images/capsnet/figure8.png)
-*Figure 8*
+<hr>*Figure 8*<hr>
 
 <p float="center">
     <img src="https://zhiaozhou.github.io/images/capsnet/figure9.png" alt="Drawing" style="width: 350px;" width="300"/> 
     <img src="https://zhiaozhou.github.io/images/capsnet/figure10.png" alt="Drawing" style="width: 350px;" width="300"/>
 </p>
-*Figure 9*
+<hr>*Figure 9*<hr>
 
 Discussion
 =====

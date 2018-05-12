@@ -59,14 +59,14 @@ Dataset
 COWC is an annotated dataset of overhead car photos (Figure 1a) created by a group from the Computation Engineering Division at Lawrence Livermore National Laboratory. COWC includes images from cities (Toronto Canada, Selwyn New Zealand, Potsdam and Vaihingen Germany, Columbus and Utah United States). All images are at 15 cm per pixel resolution at ground (Mundhenk, Konjevod, Sakla, & Boakye, 2016). In total, there are 32,716 unique annotated cars. 58,247 unique negative examples. For the data preprocessing, we cropped the grey frames of all images. We dropped the data of Utah, which contains almost 60% of the original dataset because out the hard disk in the virtual environment for our analysis. As data augmentation has been done in the original dataset (Figure 1b), no further data preprocess was conducted. The labels in this dataset only correspond to the number of cars present in the image and go from 0 to 41.
 
 ![](https://zhiaozhou.github.io/images/vehicle/figure1.png)
-*Figure 1. Training Data for Model 1. (a) They were labeled as 26, 10, 0, 6, 1, 4 respectively. (b) Data augmentation with the original datasets.*
+<br>*Figure 1. Training Data for Model 1. (a) They were labeled as 26, 10, 0, 6, 1, 4 respectively. (b) Data augmentation with the original datasets.*<br>
 
 The choice of using a second dataset was done for two reasons: 1) the lack of additional labels in the COWC dataset made the task of counting more difficult and 2) the viewing angle in the COWC dataset is not the most frequent one seen in traffic cameras and this would affect the applicability of the resulting CNN. 
 
 The Annotated Driving Dataset (Gonzalez, Higgins & Cameron, 2017) included 24,423 frames with labels in total collected from a Point Grey research cameras. These images are taken from a more horizontal viewpoint (Figure 2a) compared with the dataset we mentioned above. All cars, trucks, and pedestrians in each frame are annotated with a bounding box (Figure 2b). This dataset includes bounding boxes and labels that identify cars, trucks, bikers, traffic lights and pedestrians.
 
 ![](https://zhiaozhou.github.io/images/vehicle/figure2.png)
-*Figure 2. Training Data for Model 2. In this datasets, objects are annotated with bounding boxes.*
+<br>*Figure 2. Training Data for Model 2. In this datasets, objects are annotated with bounding boxes.*<br>
 
 Methods
 We tried 4 different models: CNN with four hidden layers, Capsule Networks, Inception Resnet v2, and Faster RCNN with Inception Resnet V2. The latter 3 of them are adopted from pre-built architectures. All of them are trained using Tensorflow with a Nvidia P5000 GPU. Regression and detection were performed over the COWC dataset, while detection was done over the Annotated Driving Dataset.
@@ -75,13 +75,13 @@ We tried 4 different models: CNN with four hidden layers, Capsule Networks, Ince
 We started with regression using the very basic CNN first, which includes 4 hidden layers. The result is not promising with an accuracy of 23.2%. We then switched to Capsule Networks. This method is good at preserving the hierarchical pose relationships between parts of an object (Sabour, Frosst, & Hinton, 2017), which can keep image details and handle ambiguity so we adopted its architecture (Figure 3) on the COWC dataset. The results were not good enough for the regression model since no matter how the hyper-parameters were tuned, the loss function was not converging.
 
 ![](https://zhiaozhou.github.io/images/vehicle/figure3.png)
-*Figure 3. Capsule Networks Architecture.*
+<br>*Figure 3. Capsule Networks Architecture.*<br>
 
 2.Classification
 Although there are instances of using CNN for regression (Walach & Wolf, 2016), this approach did not prove fruitful for our goal, a small neural network cannot successfully extract the features of tiny objects in images of the COWC dataset. CNN seems more widely used for its ability to do classification, so we adopted the Inception Resnet V2 for classification which is now one of the most accurate and state-of-art classification algorithms as it gets the best performance in ILSVRC image test, developed by Google in 2016  (Alemi, 2016). Compared to the Capsule Networks, Inception goes even deeper and complex (Figure 4) for achieving better performance on image recognition. Meanwhile, the introduction of Resnet further guaranteed the performance of very deep networks (Szegedy, Ioffe, Vanhoucke, & Alemi, 2017).
 
 ![](https://zhiaozhou.github.io/images/vehicle/figure4.png)
-*Figure 4. Schematic Diagram of Inception-ResNet-v2*
+<br>*Figure 4. Schematic Diagram of Inception-ResNet-v2*<br>
 
 We trained our model on 20k iterations with an initial learning rate of 0.1 and decay rate of 0.5. However, unlike what Google does by default, we used a cyclical learning rate to make the loss function keep decreasing on a steady basis. What’s more, we tried to finetune all of the layers in the network instead of using ones Google provides because of the difference of our dataset with theirs. It turns out that it has a high recall and precision rate as shown in Table 1 which means that it classifies correctly on those classes that it needs to classify. However, the accuracy rate is not high due to an “empty car” class we added before training the model in case there were test sets that had a numbers of cars which were not in our classes. An accuracy rate of 84% means that the classifier classifies quite a few samples in the empty class which leads to our concern that is whether a classifier can be powerful enough to detect features in the image especially these ones containing only “half” cars.
 
@@ -105,7 +105,7 @@ We trained our model on 20k iterations with an initial learning rate of 0.1 and 
 That concern results in our next step which is to train an object detection model because we think that with specific bounding boxes, the model can detect the vehicles more accurately and more easily. This time we did not just select the most accurate learning algorithm because we have to sacrifice the accuracy to relatively lower the cost and time. Consequently, we chose Faster RCNN with Inception ResNet V2 Inception Resnet V2 showed a promising result for car classification. For car detection, we chose the Faster RCNN with Inception Resnet V2 (Ren, He, Girshick, & Sun, 2015). And more importantly it’s large and powerful enough for detection and it only takes 0.7s to run on one iteration. We set all of the hyper-parameters by default and tuned only the last softmax layer or it can take nearly forever to make the lost function converge. After 22k iterations, we got a mean average precision of 0.8 on our test set.  An example is shown below.
 
 ![](https://zhiaozhou.github.io/images/vehicle/figure5.png)
-*Figure 5. Example of Faster RCNN with Inception ResNet V2*
+<br>*Figure 5. Example of Faster RCNN with Inception ResNet V2*<br>
 
 Last but not least, we tested our two models on a few real-time traffic cam streams from Manhattan, New York City. It turns out that using classification on them can be mighty slow while the object detection works pretty well.
 
