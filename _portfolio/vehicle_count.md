@@ -5,8 +5,8 @@ collection: portfolio
 ---
 
 ---------
-Team Members
-=====
+
+<h1 id="abstract">Team Members</h1>
 
 <table border="1" align="center">
     <tr>
