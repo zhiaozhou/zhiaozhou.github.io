@@ -24,7 +24,7 @@
 
   .page__inner-wrap {
     @include full();
-    min-height: 100vh;
+
     .page__content,
     .page__meta,
     .page__share {

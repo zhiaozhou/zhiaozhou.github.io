@@ -5,10 +5,6 @@
 .page__footer {
   @include full();
   @include clearfix;
-  margin-top: -3em;
-  position: relative;
-  clear: both;
-  z-index: 10;
   color: mix(#fff, $gray, 25%);
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
@@ -19,6 +15,7 @@
   border-top: 1px solid $light-gray;
 
   footer {
+    bottom: 0;
     @include container;
     @include clearfix;
     margin-top: 2em;
