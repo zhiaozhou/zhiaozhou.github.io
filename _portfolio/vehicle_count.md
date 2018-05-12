@@ -6,11 +6,29 @@ collection: portfolio
 
 Team Members
 =====
-| Member | Email | Github |
-| :--: | :--: | :--: |
-| Zhiao Zhou | <zz1749@nyu.edu> | <https://github.com/zhiaozhou> |
-| Julian Ferreiro | <julian.ferreiro@nyu.edu> | <https://github.com/jif245> |
-| Lingyi Zhang | <lingyi.zhang@nyu.edu> | <https://github.com/lingyielia> |
+
+<table border="1" align="center">
+    <tr>
+        <th style="text-align:center;">Member</th>
+        <th style="text-align:center;">Email</th>      
+        <th style="text-align:center;">Github</th>
+    </tr>
+    <tr>
+        <td align="center">Zhiao Zhou</td>
+        <td align="center"><a href="#">zz1749@nyu.edu</a></td>      
+        <td align="center"><a href="#">https://github.com/zhiaozhou</a></td>
+    </tr>
+    <tr>
+        <td align="center">Julian Ferreiro</td>
+        <td align="center"><a href="#">julian.ferreiro@nyu.edu</a></td>        
+        <td align="center"><a href="#">https://github.com/jif245</a></td>
+    </tr>
+    <tr>
+        <td align="center">Lingyi Zhang</td>
+        <td align="center"><a href="#">lingyi.zhang@nyu.edu</a></td>        
+        <td align="center"><a href="#">https://github.com/lingyielia</a></td>
+    </tr>
+</table>
 
 Abstract
 =====
@@ -66,9 +84,20 @@ Although there are instances of using CNN for regression (Walach & Wolf, 2016), 
 
 We trained our model on 20k iterations with an initial learning rate of 0.1 and decay rate of 0.5. However, unlike what Google does by default, we used a cyclical learning rate to make the loss function keep decreasing on a steady basis. What’s more, we tried to finetune all of the layers in the network instead of using ones Google provides because of the difference of our dataset with theirs. It turns out that it has a high recall and precision rate as shown in Table 1 which means that it classifies correctly on those classes that it needs to classify. However, the accuracy rate is not high due to an “empty car” class we added before training the model in case there were test sets that had a numbers of cars which were not in our classes. An accuracy rate of 84% means that the classifier classifies quite a few samples in the empty class which leads to our concern that is whether a classifier can be powerful enough to detect features in the image especially these ones containing only “half” cars.
 
-| Model  | Accuracy | Recall         | Precision         |
-| :------------ | :-----------: | -------------------: | -------------------: |
-| Inception Resnet V2    | 84.12%         | 99.77% | 98.37% |
+<table border="1" align="center">
+    <tr>
+        <th style="text-align:center;">Model</th>
+        <th style="text-align:center;">Accuracy</th>      
+        <th style="text-align:center;">Recall</th>
+        <th style="text-align:center;">Precision</th>
+    </tr>
+    <tr>
+        <td align="center">Inception Resnet V2</td>
+        <td align="center">84.12%</td>
+        <td align="center">99.77%</td>
+        <td align="center">98.37%</td>
+    </tr>
+</table>
 *Table 1. Model 1 Performance*
 
 3.Object Detection
@@ -107,9 +136,10 @@ As for the implications of our work, the experience was useful to have a first a
 Reference
 =====
 A Beginner's Guide To Understanding Convolutional Neural Networks - Retrieved from:
-https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/
+<https://adeshpande3.github.io/adeshpande3.github.io/A-Beginner's-Guide-To-Understanding-Convolutional-Neural-Networks/>
 
-Alemi, A. (2016). Improving Inception and Image Classification in TensorFlow. Retrieved from: https://research.googleblog.com/2016/08/improving-inception-and-image.html
+Alemi, A. (2016). Improving Inception and Image Classification in TensorFlow. Retrieved from: 
+<https://research.googleblog.com/2016/08/improving-inception-and-image.html>
 
 Bertaud, A (2014). Cities As Labor Markets. Retrieved from:
-https://marroninstitute.nyu.edu/uploads/content/Cities_as_Labor_Markets.pdf
+<https://marroninstitute.nyu.edu/uploads/content/Cities_as_Labor_Markets.pdf>
