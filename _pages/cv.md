@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-[Click here to View My Up-to-date Curriculum Vitae [PDF] or preview below](http://zhiaozhou.github.io/files/zhiaozhou_cv.pdf)
+<p class="notice--success">Download the CV <a href="http://zhiaozhou.github.io/files/zhiaozhou_cv.pdf" class="btn btn--success">here</a></p>
 
 <iframe src="https://drive.google.com/file/d/1d1WncfjrLdP1hD4cAu58iMp91SYRod4Q/preview" type="application/pdf" width="100%" height="640dip"></iframe>
 
