@@ -4,6 +4,7 @@ excerpt: "In this project, a object detector is trained using Faster RCNN with I
 collection: portfolio
 ---
 
+---------
 Team Members
 =====
 
