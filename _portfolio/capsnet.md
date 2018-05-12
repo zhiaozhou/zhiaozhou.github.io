@@ -16,18 +16,18 @@ collection: portfolio
     </tr>
     <tr>
         <td align="center">Zhiao Zhou</td>
-        <td align="center"><a href="#">zz1749@nyu.edu</a></td>      
-        <td align="center"><a href="#">https://github.com/zhiaozhou</a></td>
+        <td align="center"><a bref="#">zz1749@nyu.edu</a></td>      
+        <td align="center"><a bref="#">https://github.com/zhiaozhou</a></td>
     </tr>
     <tr>
         <td align="center">Jianghao Zhu</td>
-        <td align="center"><a href="#">jz2575@nyu.edu</a></td>        
-        <td align="center"><a href="#">https://github.com/jz2575</a></td>
+        <td align="center"><a bref="#">jz2575@nyu.edu</a></td>        
+        <td align="center"><a bref="#">https://github.com/jz2575</a></td>
     </tr>
     <tr>
         <td align="center">Chenyu Xu</td>
-        <td align="center"><a href="#">cx463@nyu.edu</a></td>        
-        <td align="center"><a href="#">https://github.com/cx463</a></td>
+        <td align="center"><a bref="#">cx463@nyu.edu</a></td>        
+        <td align="center"><a bref="#">https://github.com/cx463</a></td>
     </tr>
 </table>
 
@@ -37,7 +37,7 @@ CapsNet is becoming a buzzword as it’s said to be proficient at at handling di
 
 1.Introduction
 =====
-Convolutional Neural Network has gained huge amount of attentions and successes in computer vision field. Deep Convolutional Neural Network has achieved significant improvement in accuracy which outperforms human recognition capability. Regardless that max pooling in Convolutional Neural Network improves performance quite well, there are still questions about information lost during the process. In addition, Convolutional Neural Networks do not quite address relationships between features, for example, relative spatial characteristics.  A face with displaced eyes, nose, and mouths could still be recognized as a face by Convolutional Neural Network, but not by Capsule Network.  In Hinton[7], he proposed Capsules Network which implementing dynamic routing by agreement algorithm that achieved state of art performance with only three layers of network. According to [7], Capsules would be able to represent
+Convolutional Neural Network has gained huge amount of attentions and successes in computer vision field. Deep Convolutional Neural Network has achieved significant improvement in accuracy which outperforms human recognition capability. Regardless that max pooling in Convolutional Neural Network improves performance quite well, there are still questions about information lost during the process. In addition, Convolutional Neural Networks do not quite address relationships between features, for example, relative spatial characteristics.  A face with displaced eyes, nose, and mouths could still be recognized as a face by Convolutional Neural Network, but not by Capsule Network.  In Hinton[7], he proposed Capsules Network which implementing dynamic routing by agreement algorithm that achieved state of art performance with only tbree layers of network. According to [7], Capsules would be able to represent
 various properties of objects like pose, deformation, velocity etc. And Capsules Network is able to learn and detect variant representations of features without utilizing 
 many layers for storing and representing these variances.  In this sense, Capsules Network acts more like human brains that learning 
 with less examples and comprehensive understanding. This is a new perspective in the computer vision field which brings more insights out from images utilizing different methods instead of propagation for data fitting and prediction. Furthermore, Capsules Network works exceptionally well on highly overlapping objects segmentation comparing to other projects for objects that have low
@@ -50,7 +50,7 @@ Chang and Chen[3] built batch-normalized network in addition to convolutional ne
 large scale machine learning system on Tensorflow gives some guidance on building such network. Ba et al[2] have
 worked on easily 4% overlapping objects images and get a accuracy of 5%. Prochazka et al[6] addressed the most challenging obstacle due to noise in segmentation problems.
 Greff et al[4], 2016 have also tried to train a deep convolutional neural network to segment overlapping digits based on Google Map View. We can see that there are not so many prior researches on this domain and from those done we find that these learning algorithms cannot deal with badly overlapping objects or they require a mighty complex structure.
-However, Hinton et al[7], 2017 trained a simple 3 layer CapsNet to get the same or even better result as these state-of-the-art but complex learning algorithms which can be a breakthrough to the similar domain. Accordingly, we are
+However, Hinton et al[7], 2017 trained a simple 3 layer CapsNet to get the same or even better result as these state-of-the-art but complex learning algorithms which can be a breaktbrough to the similar domain. Accordingly, we are
 going to train a CapsNet to test its performance on overlapping digits. And we will try to improve the model by adding batch normalization, regularization, optimizers and so on so that we can get a better result than Hinton[7]. The
 implementation of this study adopted from [5].
 
@@ -76,7 +76,7 @@ learning rate, batch normalization, cyclical learning rate method and so on.
 
 5.Methodology
 =====
-In this part, we will mainly focus on the algorithm of the whole project, and discussed it in three aspects: the whole process from input to output; the module of Capsule and analysis of its structure; the optimization of the whole structure.
+In this part, we will mainly focus on the algorithm of the whole project, and discussed it in tbree aspects: the whole process from input to output; the module of Capsule and analysis of its structure; the optimization of the whole structure.
 5.1 Whole Process
     5.1.1 Mini-batch Generation
     We use mini-batch algorithm to train and test. The initialization of batch size is 64. To reduce the overfitting, we could use data augmentation to increase the diversity of data set. Here we could just shift each pictures for a small random distance (0-2 pixels) in random direction.
@@ -92,16 +92,16 @@ In this part, we will mainly focus on the algorithm of the whole project, and di
     5.1.3 Squash Function
     The equation of squash function is shown as (1):
     ![](https://zhiaozhou.github.io/images/capsnet/figure1.png)
-    <hr>
+    <br>
     *Figure 1*
-    <hr>
+    <br>
     This function will keep the direction of original vectors, while it will squash the length of the vectors. The length will always smaller than 1. 
     When we use vectors to describe the features, spatial angle is used for describe the relationship between different features. Therefore, vectors could describe more complicated relationship than scalar. While length of vector works as the scalar in regular CNN module. The larger of a scalar, the higher existing percentage of that feature. In this way, we use squash function to squash the length, and make length to represent the existing percentage of that feature.
     5.1.4 Reconstruction & Loss function
     The aim of reconstruction is to distinguish the difference between real label and predicted ones. The process of reconstruction has been described in [2] as Figure 2. There are 3 layers: First, we adjust the prediction into 64 * 160 matrix; Second, we generate first fully connected layer with size 64 * 512; Third, generate the second fully connected layer with size 64 * 1024; Forth, generate the third fully connected layer with size 64 * 784; Last, reshape the matrix into 64 * 28 * 28 * 1.
     When we reconstruct the input pictures, there are two methods to calculate the difference. The first one is to calculate the Euclidean distance between each reconstructed picture and the orginal pictures derived from. Then we calculate the mean. Another way is to use:
     ![](https://zhiaozhou.github.io/images/capsnet/figure2.png)
-    <hr>*Figure 2*<hr>
+    <br>*Figure 2*<br>
     to calculate the loss.
     The result for both loss calculation is 64 size matrix.
     Then we need to combine these two loss to form the loss function.
@@ -121,12 +121,12 @@ The input vector could also be called as lower-layer capsule. The output is high
 There are 3 steps in this part and last 2 are Dynamic Routing.
 The first step is affine transform:
 ![](https://zhiaozhou.github.io/images/capsnet/figure3.png)
-<hr>*Figure 3*<hr>
+<br>*Figure 3*<br>
 It considers the relation between lower-layer capsules and higher-level capsules. That is the reason that Dynamic Routing could keep affine invariance. Here matrix wij is those relations. The size of wij is 1 * 6 * 6 * 32 * 8 * 10 * 16, which means for each element of each vector, we need to consider the relations with each element for all output capsules. 
 After calculating dot product with lower-layer capsule, we acquire a 64 * 6 *6 * 32 * 8 * 10 * 16 matrix. Then we sum the elements for each vector and acquire a 64 * 6 * 6 * 32 * 1 * 10 * 6 vector. It shows the prediction for output feature by each input vector. We could consider this step as another convolution layer.
 Not all predictions are useful. We need a scalar weight matrix to determine which predictions are more important and which are not. The size is 1 * 6 * 6 * 32 * 1 * 10 * 1. We initialize this matrix as constant 0, and it could adjust to suitable value within 3 iterations. Softmax function could be added on this weight matrix. Therefore, in second step, we do dot product and acquire the suitable prediction for each input vector. Then we need to sum all predictions in the same pictures. 
 ![](https://zhiaozhou.github.io/images/capsnet/figure4.png)
-<hr>*Figure 4*<hr>
+<br>*Figure 4*<br>
 Now we have acquired the prediction for each higher-layer capsule by each picture. The result is a 64 * 1 * 1* 1 * 1 * 10 * 16 matrix.
 The last step is to squash each output vector. The prediction result is a 64 * 10 * 16 matrix.
 We have mentioned that we should do iterations here to update the weight matrix in step 2. The process has been described in [2] as Procedure 1. After 3 iterations, the module could acquire a satisfying prediction result.
@@ -135,7 +135,7 @@ The original paper doesn’t use some widely used optimization methods such as b
 In addition, in order to prevent overfitting, we used an additional L2 regularization term to the loss function. 
 At last, we tested a new way called cyclical learning rate method to find our best initial learning rate. This method is proposed by Leslie N. Smith 2017. We first initiated our learning rate with 0.00001 and then let it increase gradiently by every epoch and then we will get the image of loss function by epoch as shown in Figure 5. We can see that when learning rate goes up to 0.00075, the slope of the curve became the biggest so we chose this as our initial learning rate.  And it turns out to perform well.
 ![](https://zhiaozhou.github.io/images/capsnet/figure5.png)
-<hr>*Figure 5*<hr>
+<br>*Figure 5*<br>
 
 6.Architecture and Design
 =====
@@ -154,7 +154,7 @@ The structure of the whole process could be divided into two modules: mini-batch
     6.3 Whole Structure
     The architecture of this project, along with sub-structure of each steps could be organized as a flow chart shown in Figure 6:
     ![](https://zhiaozhou.github.io/images/capsnet/figure6.jpg)
-    <hr>*Figure 6*<hr>
+    <br>*Figure 6*<br>
 
 Results
 =====
@@ -181,15 +181,15 @@ And we also noticed that the original paper did not use some optimization such a
 *Table 1*
 
 ![](https://zhiaozhou.github.io/images/capsnet/figure7.png)
-<hr>*Figure 7*<hr>
+<br>*Figure 7*<br>
 ![](https://zhiaozhou.github.io/images/capsnet/figure8.png)
-<hr>*Figure 8*<hr>
+<br>*Figure 8*<br>
 
 <p float="center">
     <img src="https://zhiaozhou.github.io/images/capsnet/figure9.png" alt="Drawing" style="width: 350px;" width="300"/> 
     <img src="https://zhiaozhou.github.io/images/capsnet/figure10.png" alt="Drawing" style="width: 350px;" width="300"/>
 </p>
-<hr>*Figure 9*<hr>
+<br>*Figure 9*<br>
 
 Discussion
 =====
