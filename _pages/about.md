@@ -12,6 +12,8 @@ redirect_from:
   <img src="https://zhiaozhou.github.io/files/zhiaozhou_img.jpg?raw=true" alt="Photo" style="width: 450px;"/> 
 </p>
 
+<script src="http://zhiaozhou.github.io/assets/js/mouse.js"></script>
+
 Background
 ======
 My past education at Shanghai University of Finance & Economics and graduate study at New York University provided me with access to professional statistical and data science studies including but not limited to Calculus, Real Analysis, Monte Carlo Simulation, Stochastic Process, Applied Data Science, Data Structure and Algorithms, Machine Learning, and Deep Learning. Besides, I’m now also starting my second master’s degree in computer science in Georgia Institute of Technology as well, to get a deeper dive of the Computer Science concepts. The learning process itself laid me a solid ground in mathematical, statistical and computational studies and practice. 
@@ -23,5 +25,3 @@ I've completed quite a few projects during my previous study with concentrations
 Career Goal
 ======
 During my undergraduate study in Actuarial Science, I was obsessed with equity analysis, using the fundamentals of a stock for evaluation and prediction of the stock outlook. The concept of quantitative finance had been around for many years in the U.S. and has certainly become a buzzword in the Chinese market as well. I was fascinated by the effective usage of quantitative finance and thus wrote my graduation dissertation on finding the effective fundamental factors affecting different sectors of stocks in China using quantitative finance. To support the content of my paper, I had to self-learn Python, NumPy, Pandas, and Matplotlib. Through this learning experience, I became interested in computational data analysis, using sophisticated data models and efficient programming to solve problems. It was not until my internship as a quantitative analyst in a top tier investment bank in China that I fell in love with Computer Science. The goal of the team project was to build a robotic advisor in the future that could automatically work out a broad asset allocation plan for those "low net-worth" customers. I was obsessed with building a robotic financial advisor system that helps investors allocate their assets. Consequently, I set my career goal to be a advanced Artificial Intelligence engineer in the FinTech field.
-
-<script src="http://zhiaozhou.github.io/assets/js/mouse.js"></script>
