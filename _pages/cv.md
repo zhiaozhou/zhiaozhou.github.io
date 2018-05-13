@@ -13,4 +13,6 @@ redirect_from:
 
 <iframe src="https://drive.google.com/file/d/1d1WncfjrLdP1hD4cAu58iMp91SYRod4Q/preview" type="application/pdf" width="100%" height="640dip"></iframe>
 
+<script src="http://zhiaozhou.github.io/assets/js/mouse.js"></script>
+
 <!-- <embed src="http://lantaoyu.com/files/lantaoyu_cv.pdf" width="650" height="1800" type='application/pdf'> -->
