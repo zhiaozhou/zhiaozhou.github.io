@@ -109,87 +109,188 @@ img {
   opacity: 1;
 }
 </style>
+
+<?/* 第一个 */?>
 <body>
 
-<h2 style="text-align:center">Czech</h2>
+<h2 style="text-align:center">Iceland</h2>
 
 <div class="container">
-  <div class="mySlides">
+  <div class="mySlides1">
     <div class="numbertext">1 / 6</div>
-    <img src="img_woods_wide.jpg" style="width:100%">
+    <img src="https://zhiaozhou.github.io/images/travel/iceland/1-wide.jpg" style="width:100%">
   </div>
 
-  <div class="mySlides">
+  <div class="mySlides1">
     <div class="numbertext">2 / 6</div>
-    <img src="img_fjords_wide.jpg" style="width:100%">
+    <img src="https://zhiaozhou.github.io/images/travel/iceland/2-wide.jpg" style="width:100%">
   </div>
 
-  <div class="mySlides">
+  <div class="mySlides1">
     <div class="numbertext">3 / 6</div>
-    <img src="img_mountains_wide.jpg" style="width:100%">
+    <img src="https://zhiaozhou.github.io/images/travel/iceland/3-wide.jpg" style="width:100%">
   </div>
     
-  <div class="mySlides">
+  <div class="mySlides1">
     <div class="numbertext">4 / 6</div>
-    <img src="img_lights_wide.jpg" style="width:100%">
+    <img src="https://zhiaozhou.github.io/images/travel/iceland/4-wide.jpg" style="width:100%">
   </div>
 
-  <div class="mySlides">
+  <div class="mySlides1">
     <div class="numbertext">5 / 6</div>
-    <img src="img_nature_wide.jpg" style="width:100%">
+    <img src="https://zhiaozhou.github.io/images/travel/iceland/5-wide.jpg" style="width:100%">
   </div>
     
-  <div class="mySlides">
+  <div class="mySlides1">
     <div class="numbertext">6 / 6</div>
-    <img src="img_snow_wide.jpg" style="width:100%">
+    <img src="https://zhiaozhou.github.io/images/travel/iceland/6-wide.jpg" style="width:100%">
   </div>
     
-  <a class="prev" onclick="plusSlides(-1)">❮</a>
-  <a class="next" onclick="plusSlides(1)">❯</a>
+  <a class="prev" onclick="plusSlides1(-1)">❮</a>
+  <a class="next" onclick="plusSlides1(1)">❯</a>
 
   <div class="caption-container">
-    <p id="caption"></p>
+    <p id="caption1"></p>
   </div>
 
   <div class="row">
     <div class="column">
-      <img class="demo cursor" src="img_woods.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+      <img class="demo cursor1" src="https://zhiaozhou.github.io/images/travel/iceland/1.jpg" style="width:100%" onclick="currentSlide1(1)" alt="Blue Lagoon">
     </div>
     <div class="column">
-      <img class="demo cursor" src="img_fjords.jpg" style="width:100%" onclick="currentSlide(2)" alt="Trolltunga, Norway">
+      <img class="demo cursor1" src="https://zhiaozhou.github.io/images/travel/iceland/2.jpg" style="width:100%" onclick="currentSlide1(2)" alt="Iceland">
     </div>
     <div class="column">
-      <img class="demo cursor" src="img_mountains.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+      <img class="demo cursor1" src="https://zhiaozhou.github.io/images/travel/iceland/3.jpg" style="width:100%" onclick="currentSlide1(3)" alt="Iceland">
     </div>
     <div class="column">
-      <img class="demo cursor" src="img_lights.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+      <img class="demo cursor1" src="https://zhiaozhou.github.io/images/travel/iceland/4.jpg" style="width:100%" onclick="currentSlide1(4)" alt="Black Beach">
     </div>
     <div class="column">
-      <img class="demo cursor" src="img_nature.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+      <img class="demo cursor1" src="https://zhiaozhou.github.io/images/travel/iceland/5.jpg" style="width:100%" onclick="currentSlide1(5)" alt="Northern Light">
     </div>    
     <div class="column">
-      <img class="demo cursor" src="img_snow.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+      <img class="demo cursor1" src="https://zhiaozhou.github.io/images/travel/iceland/6.jpg" style="width:100%" onclick="currentSlide1(6)" alt="Waterfall">
     </div>
   </div>
 </div>
 
 <script>
 var slideIndex = 1;
-showSlides(slideIndex);
+showSlides1(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+function plusSlides1(n) {
+  showSlides1(slideIndex += n);
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+function currentSlide1(n) {
+  showSlides1(slideIndex = n);
 }
 
-function showSlides(n) {
+function showSlides1(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  var captionText = document.getElementById("caption");
+  var slides1 = document.getElementsByClassName("mySlides1");
+  var dots = document.getElementsByClassName("demo cursor1");
+  var captionText = document.getElementById("caption1");
+  if (n > slides1.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides1.length}
+  for (i = 0; i < slides1.length; i++) {
+      slides1[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides1[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+</body>
+
+
+<?/* 第二个 */?>
+<body>
+
+<h2 style="text-align:center">Finland</h2>
+
+<div class="container">
+  <div class="mySlides2">
+    <div class="numbertext">1 / 6</div>
+    <img src="https://zhiaozhou.github.io/images/travel/finland/1-wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides2">
+    <div class="numbertext">2 / 6</div>
+    <img src="https://zhiaozhou.github.io/images/travel/finland/2-wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides2">
+    <div class="numbertext">3 / 6</div>
+    <img src="https://zhiaozhou.github.io/images/travel/finland/3-wide.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides2">
+    <div class="numbertext">4 / 6</div>
+    <img src="https://zhiaozhou.github.io/images/travel/finland/4-wide.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides2">
+    <div class="numbertext">5 / 6</div>
+    <img src="https://zhiaozhou.github.io/images/travel/finland/5-wide.jpg" style="width:100%">
+  </div>
+    
+  <div class="mySlides2">
+    <div class="numbertext">6 / 6</div>
+    <img src="https://zhiaozhou.github.io/images/travel/finland/6-wide.jpg" style="width:100%">
+  </div>
+    
+  <a class="prev" onclick="plusSlides2(-1)">❮</a>
+  <a class="next" onclick="plusSlides2(1)">❯</a>
+
+  <div class="caption-container">
+    <p id="caption2"></p>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor2" src="https://zhiaozhou.github.io/images/travel/finland/1.jpg" style="width:100%" onclick="currentSlide2(1)" alt="Cathedral">
+    </div>
+    <div class="column">
+      <img class="demo cursor2" src="https://zhiaozhou.github.io/images/travel/finland/2.jpg" style="width:100%" onclick="currentSlide2(2)" alt="Moose">
+    </div>
+    <div class="column">
+      <img class="demo cursor2" src="https://zhiaozhou.github.io/images/travel/finland/3.jpg" style="width:100%" onclick="currentSlide2(3)" alt="Snowmobile">
+    </div>
+    <div class="column">
+      <img class="demo cursor2" src="https://zhiaozhou.github.io/images/travel/finland/4.jpg" style="width:100%" onclick="currentSlide2(4)" alt="Husky">
+    </div>
+    <div class="column">
+      <img class="demo cursor2" src="https://zhiaozhou.github.io/images/travel/finland/5.jpg" style="width:100%" onclick="currentSlide2(5)" alt="Santa Claus">
+    </div>    
+    <div class="column">
+      <img class="demo cursor2" src="https://zhiaozhou.github.io/images/travel/finland/6.jpg" style="width:100%" onclick="currentSlide2(6)" alt="Small Santas">
+    </div>
+  </div>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides2(slideIndex);
+
+function plusSlides2(n) {
+  showSlides2(slideIndex += n);
+}
+
+function currentSlide2(n) {
+  showSlides2(slideIndex = n);
+}
+
+function showSlides2(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides2");
+  var dots = document.getElementsByClassName("demo cursor2");
+  var captionText = document.getElementById("caption2");
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
@@ -205,4 +306,9 @@ function showSlides(n) {
 </script>
     
 </body>
+
+
+
 </html>
+
+

@@ -171,9 +171,9 @@ var addressPoints = [
   ], 
   [
     "Cairns, Australia. January 2017.",
-    -16.918551
+    -16.918551,
     145.778055
-  ], 
+  ],
   [
     "Vancouver, Canada. August 2017.",
     49.282729,
